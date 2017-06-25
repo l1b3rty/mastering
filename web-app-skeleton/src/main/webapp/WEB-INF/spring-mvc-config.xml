@@ -1,0 +1,50 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="
+		   http://www.springframework.org/schema/beans
+		   http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		   http://www.springframework.org/schema/mvc
+		   http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		   http://www.springframework.org/schema/context
+		   http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		   http://www.springframework.org/schema/tx
+		   http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:component-scan base-package="org.glau.tlab.webapp" />
+	<mvc:annotation-driven />
+	<tx:annotation-driven />
+
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<!-- ORM -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="org.postgresql.Driver"/>
+		<property name="url" value="jdbc:postgresql://localhost:5432/foreman"/>
+		<property name="username" value="foreman"/>
+		<property name="password" value="foreman"/>
+		<property name="initialSize" value="2" />
+		<property name="maxActive" value="5" />
+		<property name="maxWait" value="5000" />
+	</bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="packagesToScan" value="org.glau.tlab.webapp.model" />
+		<property name="hibernateProperties" value="hibernate.dialect=org.hibernate.dialect.PostgreSQL91Dialect" />
+	</bean>
+
+	<bean id="transactionManager"
+		  class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+		  p:sessionFactory-ref="sessionFactory">
+	</bean>
+
+</beans>
