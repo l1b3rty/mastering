@@ -1,5 +1,6 @@
 package org.glau.tlab.webapp.services;
 
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
-@Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Scope(value = BeanDefinition.SCOPE_PROTOTYPE/*, proxyMode = ScopedProxyMode.TARGET_CLASS*/)
 public class SimplePrototypeService {
 
     private static final Logger log = Logger.getLogger(SimplePrototypeService.class.getName());

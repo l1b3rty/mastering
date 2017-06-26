@@ -1,3 +1,4 @@
+<!--
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:context="http://www.springframework.org/schema/context"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -25,7 +26,7 @@
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
-	<!-- ORM -->
+	&lt;!&ndash; ORM &ndash;&gt;
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="org.postgresql.Driver"/>
 		<property name="url" value="jdbc:postgresql://localhost:5432/foreman"/>
@@ -47,4 +48,4 @@
 		  p:sessionFactory-ref="sessionFactory">
 	</bean>
 
-</beans>
+</beans>-->

@@ -29,12 +29,14 @@ class DefaultItemsService implements ItemsService {
     @Transactional
     @Override
     public Item getById(long id) {
-        log.log(Level.INFO, "Prototype BeanId: " + prototypeService.getBeanId()/*"0 - hardcode"*/);
+        log.log(Level.INFO, "(1) Prototype BeanId: " + getPrototypeService().getBeanId()/*"0 - hardcode"*/);
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             log.log(Level.WARNING, "Interrupted", e);
         }
+
+        log.log(Level.INFO, "(2) Prototype BeanId: " + getPrototypeService().getBeanId()/*"0 - hardcode"*/);
         return dao.findById(id);
     }
 

@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
@@ -20,6 +21,7 @@ public class Controller {
     private ItemsService itemsService;
 
     @RequestMapping("/item/{id}")
+    @ResponseBody
     public ResponseEntity getItem(@PathVariable("id") Long id) {
         Item item = itemsService.getById(id);
 
