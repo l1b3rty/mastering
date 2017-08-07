@@ -17,7 +17,7 @@ class WebApplicationConfig {
 
     @Bean
     public String uselessBean() {
-        return "Dumb!1111";
+        return "Dumb123";
     }
 
 
