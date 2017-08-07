@@ -9,7 +9,7 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class<?>[] {
-            WebApplicationConfig.class
+            WebMvcConfig.class
         };
     }
 
@@ -23,7 +23,7 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
     @Override
     protected String[] getServletMappings() {
         return new String[] {
-            "/"
+            "/test"
         };
     }
 

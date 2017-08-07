@@ -13,4 +13,13 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @PropertySource("classpath:application.properties")
 @EnableWebMvc
 @EnableTransactionManagement
-class WebApplicationConfig { }
+class WebApplicationConfig {
+
+    @Bean
+    public String uselessBean() {
+        return "Dumb";
+    }
+
+
+
+}
