@@ -1,4 +1,4 @@
-package org.glau.tlab.webapp.config;
+package org.glau.tlab.orm.config;
 
 import org.springframework.context.annotation.*;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -8,8 +8,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Import(value = {
     PersistenceConfig.class
 })
-@ImportResource("WEB-INF/test.xml")
-@ComponentScan(value = "org.glau.tlab.webapp")
+@ComponentScan(value = "org.glau.tlab.orm")
 @PropertySource("classpath:application.properties")
 @EnableWebMvc
 @EnableTransactionManagement
